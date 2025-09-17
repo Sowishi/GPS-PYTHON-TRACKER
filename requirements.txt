@@ -1,4 +1,5 @@
 httpx==0.11.1
 http3
+requests==2.31.0
 Flask==2.3.3
 gunicorn==21.2.0
