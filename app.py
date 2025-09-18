@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 import asyncio
 import logging
 from obdtracker import api, location
@@ -8,6 +9,17 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
+
+# Configure CORS with specific origins
+CORS(app, origins=[
+    "http://localhost:3000",
+    "http://localhost:8080", 
+    "http://localhost:5000",
+    "http://127.0.0.1:3000",
+    "http://127.0.0.1:8080",
+    "http://127.0.0.1:5173",
+    "https://projects-b1c71.web.app"
+])
 
 @app.route('/get-device-location', methods=['GET', 'POST'])
 def get_device_location():
